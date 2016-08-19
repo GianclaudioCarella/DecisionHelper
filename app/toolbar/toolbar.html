@@ -1,0 +1,36 @@
+<md-toolbar class="md-table-toolbar md-primary">
+    <div class="md-toolbar-tools">
+        <img src="./img/logo.png" alt="">
+        <div flex></div>
+
+        <p style="font-size:15px; margin: 0px;">{{vm.user.email}}</p>
+
+        <!--<md-button class="md-icon-button" aria-label="More" ng-click="">
+            <md-tooltip md-direction="up">
+                More
+            </md-tooltip>
+            <ng-md-icon icon="keyboard_arrow_down" size="20" style="margin-top: 4px;"></ng-md-icon>
+        </md-button>-->
+
+        <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="vm.openMenu($mdOpenMenu, $event)">
+                <ng-md-icon icon="keyboard_arrow_down" size="20" style="margin-top: 4px;"></ng-md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-click="vm.logout()">
+                        <ng-md-icon icon="logout" size="20" style="margin-top: 4px;"></ng-md-icon>
+                        Logout
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <!--<md-button class="md-icon-button" aria-label="Logout" ng-click="vm.logout()">
+            <md-tooltip md-direction="up">
+                Logout
+            </md-tooltip>
+            <ng-md-icon icon="logout"></ng-md-icon>
+        </md-button>-->
+
+    </div>
+</md-toolbar>

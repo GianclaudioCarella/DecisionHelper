@@ -1,0 +1,156 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Helvetica;
+        background: #eee;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    hgroup {
+        text-align: center;
+        margin-top: 4em;
+    }
+    
+    h1,
+    h3 {
+        font-weight: 300;
+    }
+    
+    h1 {
+        color: #636363;
+    }
+    
+    h3 {
+        color: #4a89dc;
+    }
+    
+    form {
+        width: 380px;
+        margin: 4em auto;
+        padding: 3em 2em 2em 2em;
+        background: #fafafa;
+        border: 1px solid #ebebeb;
+        box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+    }
+    
+    .group {
+        position: relative;
+        margin-bottom: 45px;
+    }
+    
+    footer {
+        text-align: center;
+    }
+    
+    footer p {
+        color: #888;
+        font-size: 13px;
+        letter-spacing: .4px;
+    }
+    
+    footer a {
+        color: #4a89dc;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+    
+    footer a:hover {
+        color: #666;
+        text-decoration: underline;
+    }
+    
+    footer img {
+        width: 80px;
+        transition: all .2s ease;
+    }
+    
+    footer img:hover {
+        opacity: .83;
+    }
+    
+    footer img:focus,
+    footer a:focus {
+        outline: none;
+    }
+</style>
+
+
+<div layout="column" layout-fill>
+    <hgroup>
+        <img src="./img/logogrande.png" style="size:50px;" alt="">
+    </hgroup>
+    <form name="loginForm" ng-if="register == 0">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>E-mail</label>
+            <input name="email"  type="email" ng-model="user.email" required>
+            <div ng-messages="loginForm.email.$error">
+                <div ng-message="required">Campo Requerido.</div>
+                <div ng-message="email">E-mail inválido.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Senha</label>
+            <input name="password" type="password" ng-model="user.password" minlength="6" required>
+            <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">Campo Requerido.</div>
+                <div ng-message="minlength">A senha deve ter no minimo 6 caracteres.</div>
+            </div>
+        </md-input-container>
+
+        <p style="font-size:12px;">Ao clicar em Registrar, concordo com os 
+            <a href="">Termos de Serviço</a> e a <a href="">Política de Privacidade</a>.</p>
+
+        <div layout="row" layout-align="space-around center">
+            <md-button type="submit" class="md-raised" ng-click="login(user)"
+            style="background-color: grey; color: white;">Entrar</md-button>
+            <md-button md-no-ink class="md-primary" ng-click="newUser(user)"
+            style="color:gray;">Registrar</md-button>
+        </div>
+    </form>
+
+    <form name="loginForm" ng-if="register == 1">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>E-mail</label>
+            <input name="email" ng-model="user.email" required>
+            <div ng-messages="loginForm.email.$error">
+                <div ng-message="required">Campo Requerido.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Senha</label>
+            <input name="password" type="password" ng-model="user.password" required>
+            <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">Campo Requerido.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Confirmar Senha</label>
+            <input name="password2" type="password" ng-model="user.password2" required>
+            <div ng-messages="loginForm.password2.$error">
+                <div ng-message="required">Campo Requerido.</div>
+            </div>
+        </md-input-container>
+        <div layout="row" layout-align="space-around center">
+
+            <md-button class="md-fab" aria-label="Add" ng-click="registrar()">
+                <ng-md-icon icon="keyboard_backspace">
+                    <md-tooltip md-direction="up">
+                        Voltar
+                    </md-tooltip>
+                </ng-md-icon>
+            </md-button>
+            <md-button type="submit" md-no-ink class="md-raised" ng-click="newUser(user)"
+            style="background-color: grey; color: white;">Confirmar</md-button>
+        </div>
+    </form>
+
+
+    <!--<footer>
+        <a href="http://www.polymer-project.org/" target="_blank"><img src="https://www.polymer-project.org/images/logos/p-logo.svg"></a>
+        <p>You Gotta Love <a href="http://www.polymer-project.org/" target="_blank">Google</a></p>
+    </footer>-->
+
+</div>

@@ -1,0 +1,180 @@
+﻿<md-dialog flex-xs flex-gt-xs="80" layout="column" ng-cloak style="height:600px; width:100px">
+
+    <form name="myForm">
+        <md-toolbar>
+
+            <div class="md-toolbar-tools">
+                <h2>Adicione uma Opção</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Adicionar" ng-click="vm.cancel()">
+                    <md-tooltip md-direction="up">
+                        Cancelar
+                    </md-tooltip>
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Guardar" ng-click="vm.save(vm.opcao)">
+                    <md-tooltip md-direction="up">
+                        Salvar
+                    </md-tooltip>
+                    <ng-md-icon icon="save"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content layout-gt-sm="column" layout-padding>
+            <!--DADOS PRINCIPAIS DA OPCAO-->
+            <div layout="row">
+                <md-input-container class="md-block" flex="25" flex-gt-sm>
+                    <label>Titulo</label>
+                    <input ng-model="vm.opcao.titulo">
+                </md-input-container>
+                <md-input-container class="md-block" flex="75" flex-gt-sm>
+                    <label>Descricao</label>
+                    <input ng-model="vm.opcao.descricao">
+                </md-input-container>
+            </div>
+
+            <!--DADOS DO ITEM-->
+            <!--<div layout="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Item</label>
+                    <input ng-model="vm.opcao.itemList.titulo">
+                </md-input-container>
+                <input-stars max="5" ng-model="vm.opcao.itemList.pontuacao"></input-stars>
+            </div>-->
+
+            <md-divider vertical style="padding:0px"></md-divider>
+
+            <div layout="row" layout-padding>
+
+                <!--LISTA NEGATIVA-->
+                <div flex-gt-xs="50" layout="column">
+                    <div layout="row" class="pqs-tabs-title">
+                        <span class="md-subhead" style="line-height:40px">Negativos</span>
+                        <div flex></div>
+                        <md-button class="md-icon-button" style="margin:0px" aria-label="Modificar" ng-click="vm.addNegativeItem(vm.opcao.itemList)">
+                            <md-tooltip md-direction="up">
+                                Adicionar
+                            </md-tooltip>
+                            <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+                        </md-button>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-table-container>
+                        <table md-table md-row-select>
+                            <thead md-head>
+                                <tr md-row>
+                                    <th md-column>Titulo</th>
+                                    <th md-column>Pontuacao</th>
+                                    <!--<th md-column></th>-->
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row md-select="dessert" md-auto-select ng-repeat="item in vm.opcao.negativeList">
+                                    <td md-cell ng-click="vm.editComment($event, item)" ng-class="{'md-placeholder': !item.titulo}">
+                                        {{item.titulo || 'Add a comment'}}
+                                    </td>
+                                    <!--<td md-cell>
+                                        <md-input-container md-no-float class="md-block" style="margin:0px">
+                                            <input ng-model="item.titulo" type="text" placeholder="Item">
+                                        </md-input-container>
+                                    </td>-->
+                                    <td md-cell>
+                                        <input-stars max="5" ng-model="item.pontuacao"></input-stars>
+                                    </td>
+                                    <!--<td md-cell>
+                                        <md-button ng-click="" style="margin:0px">
+                                            <ng-md-icon icon="remove_red_eye" md-menu-align-target></ng-md-icon>
+                                            <md-tooltip md-direction="up">
+                                                Ver Observaciones
+                                            </md-tooltip>
+                                        </md-button>
+                                    </td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </div>
+
+
+
+                <!--LISTA POSITIVA-->
+                <div flex-gt-xs="50" layout="column">
+                    <div layout="row" class="pqs-tabs-title">
+                        <span class="md-subhead" style="line-height:40px">Positivos</span>
+                        <div flex></div>
+                        <md-button class="md-icon-button" style="margin:0px" aria-label="Modificar" ng-click="vm.addPositiveItem(vm.opcao.itemList)">
+                            <md-tooltip md-direction="up">
+                                Adicionar
+                            </md-tooltip>
+                            <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+                        </md-button>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-table-container>
+                        <table md-table md-row-select>
+                            <thead md-head>
+                                <tr md-row>
+                                    <th md-column>Titulo</th>
+                                    <th md-column>Pontuacao</th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row md-auto-select ng-repeat="item in vm.opcao.positiveList">
+                                    <td md-cell ng-click="vm.editComment($event, item)" ng-class="{'md-placeholder': !item.titulo}">
+                                        {{item.titulo || 'Add a comment'}}
+                                    </td>
+                                    <!--<td md-cell>
+                                        <md-input-container md-no-float class="md-block" style="margin:0px">
+                                            <input ng-model="item.titulo" type="text" placeholder="Item">
+                                        </md-input-container>
+                                    </td>-->
+                                    <td md-cell>
+                                        <input-stars max="5" ng-model="item.pontuacao"></input-stars>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </div>
+
+            </div>  
+
+            <!--<div layout="row" flex>
+                <div flex-gt-xs="50" layout="row">
+                    <md-list flex>
+                        <md-subheader class="md-no-sticky">Negative List
+                            <md-button class="md-icon-button" aria-label="More" ng-click="vm.addNegativeItem(vm.opcao.itemList)">
+                                <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+                            </md-button>
+                        </md-subheader>
+                        <md-list-item class="md-3-line" ng-repeat="item in vm.opcao.negativeList" ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{ item.titulo }}</h3>
+                                <p>{{ item.descricao }} - {{item.pontuacao}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+
+                <md-divider vertical></md-divider>
+
+                <div flex-xs flex-gt-xs="50" layout="row" flex>
+                    <md-list flex>
+                        <md-subheader class="md-no-sticky">Positive List
+                            <md-button class="md-icon-button" aria-label="More" ng-click="vm.addPositiveItem(vm.opcao.itemList)">
+                                <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+                            </md-button>
+                        </md-subheader>
+                        <md-list-item class="md-3-line" ng-repeat="item in vm.opcao.positiveList" ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{ item.titulo }}</h3>
+                                <p>{{ item.descricao }} - {{item.pontuacao}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </div>-->
+        </md-dialog-content>
+    </form>
+</md-dialog>

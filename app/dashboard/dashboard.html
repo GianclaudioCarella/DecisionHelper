@@ -1,0 +1,211 @@
+﻿<style>
+    body {
+        font-family: arial;
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: -160px;
+        ;
+        transition: 100ms left;
+    }
+
+    #navigation-toggle {
+        position: absolute;
+        left: 160px;
+        background: rgba(3,159,244,.95);
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+    }
+
+    .show {
+        left: 0;
+    }
+
+    .navigation {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navigation-items a {
+        display: block;
+        background-color: #444;
+        color: white;
+        line-height: 2em;
+        text-decoration: none;
+        padding: 10px 30px;
+        width: 100px;
+    }
+
+        .navigation-items a:hover {
+            background-color: #222;
+        }
+
+    /*AQUI COMECA O CSS*/
+    .dashboard {
+        background-color: brown;
+        width: 100%;
+        height: 100%;
+    }
+
+    .frase {
+        font-size: 40px;
+        font-family:'Microsoft PhagsPa';
+        color: #489234;
+    }
+
+    .cardPositive {
+        background-color:#2dae1f;
+        width: 280px;
+        height: 90px;
+        margin-top:20px;
+    }
+    .cardpointsPositive{
+        background-color: #489234;
+        width: 100px;
+        height: 90px;
+        color:white;
+        font-size:60px;
+        padding-left:34px;
+        font-family:'Microsoft PhagsPa';
+    }
+
+    .cardNegative {
+        background-color:#cb3a24;
+        width: 280px;
+        height: 90px;
+        margin-top:20px;
+    }
+    .cardpointsNegative{
+        background-color: #bc0e0e;
+        width: 100px;
+        height: 90px;
+        color:white;
+        font-size:60px;
+        padding-left:34px;
+        font-family:'Microsoft PhagsPa';
+    }
+
+    .cardTotal {
+        background-color:#0e8bbd;
+        width: 280px;
+        height: 90px;
+        margin-top:20px;
+    }
+    .cardpointsTotal{
+        background-color: #006f9b;
+        width: 100px;
+        height: 90px;
+        color:white;
+        font-size:60px;
+        padding-left:34px;
+        font-family:'Microsoft PhagsPa';
+    }
+
+
+    .opcaoList {
+        background-color: lightgray;
+        width:280px;
+        height:385px;
+        margin-top:20px;
+    }
+    .grafico {
+        background-color: lightgray;
+        width:280px;
+        height:200px;
+
+    }
+
+
+</style>
+
+
+<md-button class="md-fab md-fab-bottom-right" aria-label="Add" ng-click="vm.dialogOpcion($event)">
+    <ng-md-icon icon="add"></ng-md-icon>
+</md-button>
+
+<md-content style="padding:0px; height:610px" class="md-padding" layout-xs="column" layout="row" layout-padding>
+
+    <!--DIV DIREITA - CARDS-->
+    <div flex-xs flex-gt-xs="30" layout="column" style="margin:8px">
+        <div ng-repeat="item in vm.opcoes">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{item.titulo}}</span>
+                        <span class="md-subhead">{{item.descricao}}</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="pontuacaoCard">{{item.pontuacaoTotal}}</div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Lista" ng-click="">
+                        <md-tooltip md-direction="up">
+                            Lista
+                        </md-tooltip>
+                        <ng-md-icon icon="list"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Editar" ng-click="vm.dialogOpcion($event)">
+                        <md-tooltip md-direction="up">
+                            Editar
+                        </md-tooltip>
+                        <ng-md-icon icon="edit"></ng-md-icon>
+                    </md-button>
+                    <md-button class="md-icon-button" aria-label="Apagar" ng-click="vm.dialogOpcion($event)">
+                        <md-tooltip md-direction="up">
+                            Apagar
+                        </md-tooltip>
+                        <ng-md-icon icon="delete"></ng-md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </div>
+
+    <!--DIV ESQUERDA - DASHBOARD-->
+    <div flex-xs flex-gt-xs="70" layout="column" style="margin:8px" flex>
+
+        <div layout="row" layout-align="space-around center" class="frase">
+            <p>Voce deve: {{vm.descricao}}</p>
+        </div>
+
+        <div layout="row" layout-align="space-between center">
+            <div class="cardPositive">
+                <div class="cardpointsPositive" layout-align="space-between center">
+                    <span>{{vm.total}}</span>
+                </div>
+                <span>Maior Pontuação</span>
+                <span>card tal</span>
+            </div>
+            <div class="cardNegative">
+                <div class="cardpointsNegative">
+                    <span>3</span>
+                </div>
+                <span>Menor Pontuação</span>
+                <span>card tal</span>
+            </div>
+            <div class="cardTotal">
+                <div class="cardpointsTotal">
+                    <span>5</span>
+                </div>
+                <span>Total de Opções</span>
+            </div>
+        </div>
+
+        <div layout="row" layout-align="space-between center">
+            <div class="opcaoList"></div>
+            <div class="opcaoList"></div>
+            <div class="grafico"></div>
+        </div>
+
+    </div>
+
+</md-content>
+
+
+
+

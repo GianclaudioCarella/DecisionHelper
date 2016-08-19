@@ -1,0 +1,26 @@
+﻿var appCore = angular.module('appCore', [
+    //
+    'ngMaterial',
+    'ngMessages',
+    'ngMdIcons',
+    'ngAnimate',
+    'ngSanitize',
+    'ngRoute',
+    'ui.router',
+    'firebase',
+    'ngplus',
+    'md.data.table',
+    'angular-spinkit',
+    'cfp.hotkeys',
+    'angular-notification-icons',
+    'chart.js',
+    'angular-input-stars'
+    //'ngRoute',
+    //'md.data.table',
+    //'ngSanitize',
+    //'ngMessages',
+    //'ngAnimate',
+    //'ui.router',
+    //'ngMdIcons',
+    //'ngMaterial',
+]);

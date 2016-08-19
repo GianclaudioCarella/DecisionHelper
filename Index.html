@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="bower_components/angular-spinkit/build/angular-spinkit.min.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css" />
+    <link rel="stylesheet" href="bower_components/angular-notification-icons/dist/angular-notification-icons.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+    <link rel="stylesheet" href="bower_components/angular-input-stars/angular-input-stars.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- inject:js -->
+    <script src="/app/core/core.module.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/core/core.controller.js"></script>
+
+    <script src="/app/common/directives.js"></script>
+    <script src="/app/common/services.js"></script>
+
+    <script src="/app/toolbar/toolbar.controller.js"></script>
+    <script src="/app/sidebar/sidebar.controller.js"></script>
+    <script src="/app/projects/projects.controller.js"></script>
+    <script src="/app/dashboard/dashboard.controller.js"></script>
+    <script src="/app/dashboard/dialog_option.controller.js"></script>
+
+    <!-- endinject -->
+    <!-- build:js js/lib.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/q/q.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+    <script src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+    <script src="bower_components/svg-morpheus/compile/minified/svg-morpheus.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/angular-spinkit/build/angular-spinkit.js"></script>
+    <script src="bower_components/angular-hotkeys/build/hotkeys.js"></script>
+    <script src="bower_components/angular-notification-icons/dist/angular-notification-icons.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="bower_components/angular-input-stars/angular-input-stars.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+</head>
+
+<body ng-app="app" ng-controller="CoreController">
+
+    <!--LOGIN-->
+    <div layout="column" ng-if="!logado" layout-fill>
+        <div login></div>
+    </div>
+
+    <!--CONTENT PRINCIPAL-->
+    <div layout="column" ng-if="logado" layout-fill>
+        <!--TOOLBAR-->
+        <div toolbar></div>
+        <!--CONTENT-->
+        <md-content ui-view flex></md-content>
+    </div>
+
+</body>
+
+</html>
